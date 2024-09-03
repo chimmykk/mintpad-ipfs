@@ -1,0 +1,28 @@
+{
+  "name": "mintpad-ipfs",
+  "version": "1.0.0",
+  "description": "IPFS File uploader for mintpad",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chimmykk/mintpad-ipfs.git"
+  },
+  "keywords": [
+    "ipfs"
+  ],
+  "author": "Yeite Rilsosing Koireng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chimmykk/mintpad-ipfs/issues"
+  },
+  "homepage": "https://github.com/chimmykk/mintpad-ipfs#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.637.0",
+    "aws-sdk": "^2.1687.0",
+    "dotenv": "^16.4.5",
+    "ipfs-car": "^0.5.10"
+  }
+}

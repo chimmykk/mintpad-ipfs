@@ -1,0 +1,31 @@
+{
+  "tokenId": 0,
+  "name": "NFT #0",
+  "image": "ipfs://bafybeidiezzm52725slrq72skw3p3gtfccoyv4inwhymeyj4nbxzn3p4ja/0.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Background 1"
+    },
+    {
+      "trait_type": "Green",
+      "value": "Green 3"
+    },
+    {
+      "trait_type": "Pink",
+      "value": "Pink 5"
+    },
+    {
+      "trait_type": "Purple",
+      "value": "Purple 2"
+    },
+    {
+      "trait_type": "Red",
+      "value": "Red 1"
+    },
+    {
+      "trait_type": "Yellow",
+      "value": "Yellow 5"
+    }
+  ]
+}
