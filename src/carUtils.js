@@ -2,6 +2,7 @@ const { packToFs } = require('ipfs-car/pack/fs');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const fs = require('fs');
 const path = require('path');
+
 const s3 = new S3Client({
   endpoint: 'https://s3.filebase.com',
   region: 'us-east-1',
@@ -11,7 +12,7 @@ const s3 = new S3Client({
   },
 });
 
-const bucketName = 'koireng';
+const bucketName = '';
 
 const createCarFile = async (folderPath, outputCarPath) => {
   try {
