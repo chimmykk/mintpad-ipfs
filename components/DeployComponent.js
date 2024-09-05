@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ethers } from 'ethers';
 import { deployCollection } from '../lib/deploy';
 import UploadComponent, {Uploadcomponent} from "../components/Uploadcomponent"
-
+import SetMintPhase, {SetMintphase} from "../components/SetMintPhase"
 export default function DeployComponent() {
   const [account, setAccount] = useState(null);
   const [chainId, setChainId] = useState(null);
@@ -75,6 +75,7 @@ export default function DeployComponent() {
 
         <div>
           <UploadComponent></UploadComponent>
+          <SetMintPhase></SetMintPhase>
           <p><strong>Connected account:</strong> {account}</p>
           <p><strong>Connected chain ID:</strong> {chainId}</p>
           <div style={{ display: 'grid', gridGap: '10px', marginBottom: '20px' }}>
