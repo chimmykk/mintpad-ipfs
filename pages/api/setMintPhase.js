@@ -1,4 +1,3 @@
-// pages/api/setMintPhase.js
 import { ethers } from 'ethers';
 
 export default async function handler(req, res) {
@@ -6,23 +5,32 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { startTime, endTime } = req.body;
-  const collectionAddress = '0x7826918E5eC4Ae9dBc6fD3a0bd28c2fc9bE7e5e9'; // Hardcoded collection address
+  const { startTime, endTime, mintPhase, phaseSupply, phaseMintPrice, phaseMintLimit, userAddress } = req.body;
+  const collectionAddress = '0x00fbdb146bFd9c1e86ae17b32C89919B7200dbC0'; // Hardcoded collection address
 
   try {
-    // Connect to the Ethereum provider
-    const provider = new ethers.providers.JsonRpcProvider(process.env.ALCHEMY_API_URL); // Use your RPC URL
-    const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider); // Use your private key
+    // Get the provider from the user's MetaMask wallet
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner(userAddress); // The signer is obtained from the user's wallet
 
-    // Get the contract instance
+    // Get the contract instance with the signer
     const collectionContract = new ethers.Contract(
       collectionAddress,
-      ['function setMintPhase(uint256 startTime, uint256 endTime) external'],
+      [
+        'function setMintPhase(uint256 startTime, uint256 endTime, uint256 mintPhase, uint256 phaseSupply, uint256 phaseMintPrice, uint256 phaseMintLimit) external'
+      ],
       signer
     );
 
     // Send the transaction to set mint phase
-    const tx = await collectionContract.setMintPhase(startTime, endTime);
+    const tx = await collectionContract.setMintPhase(
+      startTime,
+      endTime,
+      mintPhase,
+      phaseSupply,
+      ethers.parseEther(phaseMintPrice),
+      phaseMintLimit
+    );
     await tx.wait();
 
     return res.status(200).json({ message: 'Mint phase set successfully', txHash: tx.hash });
