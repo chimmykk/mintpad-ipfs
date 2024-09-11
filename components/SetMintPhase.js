@@ -1,21 +1,20 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import { ethers } from 'ethers';
 
 export default function SetMintPhase() {
   const [startDate, setStartDate] = useState(new Date().toISOString().slice(0, 16));
   const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 16));
-  const [mintPhase, setMintPhase] = useState(1); // Default to public mint
-  const [phaseSupply, setPhaseSupply] = useState(100); // Example default supply
-  const [phaseMintPrice, setPhaseMintPrice] = useState('0.01'); // Default mint price in Ether
-  const [phaseMintLimit, setPhaseMintLimit] = useState(5); // Default mint limit per wallet
+  const [mintPrice, setMintPrice] = useState('0.004'); // Mint price in Ether
+  const [mintLimit, setMintLimit] = useState(4); // Mint limit per wallet
+  const [whitelistEnabled, setWhitelistEnabled] = useState(false); // Whitelist status
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [account, setAccount] = useState(null);
 
-  const collectionAddress = '0xb012032613E957c13acC3b806bE4E60f6Fc0e701'; // Your contract address
+  const contractAddress = '0xb0aab7d4f1d83f6b601baa3e68170b6c4c6261d4'; // Your contract address
   const contractABI = [
-    'function setMintPhase(uint256 startTime, uint256 endTime, uint256 mintPhase, uint256 phaseSupply, uint256 phaseMintPrice, uint256 phaseMintLimit) external',
+    'function addMintPhase(uint256 mintPrice, uint256 mintLimit, uint256 mintStartTime, uint256 mintEndTime, bool whitelistEnabled) external'
   ];
 
   // Function to connect MetaMask wallet
@@ -50,19 +49,18 @@ export default function SetMintPhase() {
       const signer = provider.getSigner();
 
       // Create contract instance
-      const collectionContract = new ethers.Contract(collectionAddress, contractABI, signer);
+      const collectionContract = new ethers.Contract(contractAddress, contractABI, signer);
 
       // Convert mint price to Wei (smallest Ether unit)
-      const mintPriceInWei = ethers.utils.parseEther(phaseMintPrice);
+      const mintPriceInWei = ethers.utils.parseEther(mintPrice);
 
       // Send the transaction to set the mint phase
-      const tx = await collectionContract.setMintPhase(
+      const tx = await collectionContract.addMintPhase(
+        mintPriceInWei,
+        mintLimit,
         Math.floor(new Date(startDate).getTime() / 1000), // Convert to seconds
         Math.floor(new Date(endDate).getTime() / 1000),   // Convert to seconds
-        mintPhase,
-        phaseSupply,
-        mintPriceInWei,
-        phaseMintLimit
+        whitelistEnabled
       );
 
       // Wait for the transaction to be confirmed
@@ -78,7 +76,7 @@ export default function SetMintPhase() {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+    <div style={{ textAlign: 'center', marginTop: '50px', fontFamily: 'Arial, sans-serif' }}>
       <h1>Set Mint Phase</h1>
 
       {!account ? (
@@ -92,6 +90,7 @@ export default function SetMintPhase() {
             color: '#fff',
             fontSize: '16px',
             cursor: 'pointer',
+            marginBottom: '20px',
           }}
         >
           Connect Wallet
@@ -99,7 +98,7 @@ export default function SetMintPhase() {
       ) : (
         <div>
           <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="start-date" style={{ display: 'block', marginBottom: '5px' }}>
+            <label htmlFor="start-date" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
               Select Mint Start Date:
             </label>
             <input
@@ -112,12 +111,15 @@ export default function SetMintPhase() {
                 borderRadius: '5px',
                 border: '1px solid #ccc',
                 fontSize: '16px',
+                width: '250px',
+                backgroundColor: '#fff',
+                color: '#000',
               }}
             />
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="end-date" style={{ display: 'block', marginBottom: '5px' }}>
+            <label htmlFor="end-date" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
               Select Mint End Date:
             </label>
             <input
@@ -130,70 +132,66 @@ export default function SetMintPhase() {
                 borderRadius: '5px',
                 border: '1px solid #ccc',
                 fontSize: '16px',
+                width: '250px',
+                backgroundColor: '#fff',
+                color: '#000',
               }}
             />
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="mint-phase">Mint Phase:</label>
+            <label htmlFor="mint-price" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
+              Mint Price (ETH):
+            </label>
             <input
-              id="mint-phase"
-              type="number"
-              value={mintPhase}
-              onChange={(e) => setMintPhase(Number(e.target.value))}
-              style={{
-                padding: '10px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-                fontSize: '16px',
-              }}
-            />
-          </div>
-
-          <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="phase-supply">Phase Supply:</label>
-            <input
-              id="phase-supply"
-              type="number"
-              value={phaseSupply}
-              onChange={(e) => setPhaseSupply(Number(e.target.value))}
-              style={{
-                padding: '10px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-                fontSize: '16px',
-              }}
-            />
-          </div>
-
-          <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="phase-mint-price">Phase Mint Price (ETH):</label>
-            <input
-              id="phase-mint-price"
+              id="mint-price"
               type="text"
-              value={phaseMintPrice}
-              onChange={(e) => setPhaseMintPrice(e.target.value)}
+              value={mintPrice}
+              onChange={(e) => setMintPrice(e.target.value)}
               style={{
                 padding: '10px',
                 borderRadius: '5px',
                 border: '1px solid #ccc',
                 fontSize: '16px',
+                width: '250px',
+                backgroundColor: '#fff',
+                color: '#000',
               }}
             />
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="phase-mint-limit">Mint Limit Per Wallet:</label>
+            <label htmlFor="mint-limit" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
+              Mint Limit Per Wallet:
+            </label>
             <input
-              id="phase-mint-limit"
+              id="mint-limit"
               type="number"
-              value={phaseMintLimit}
-              onChange={(e) => setPhaseMintLimit(Number(e.target.value))}
+              value={mintLimit}
+              onChange={(e) => setMintLimit(Number(e.target.value))}
               style={{
                 padding: '10px',
                 borderRadius: '5px',
                 border: '1px solid #ccc',
                 fontSize: '16px',
+                width: '250px',
+                backgroundColor: '#fff',
+                color: '#000',
+              }}
+            />
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
+            <label htmlFor="whitelist-enabled" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
+              Whitelist Enabled:
+            </label>
+            <input
+              id="whitelist-enabled"
+              type="checkbox"
+              checked={whitelistEnabled}
+              onChange={(e) => setWhitelistEnabled(e.target.checked)}
+              style={{
+                marginLeft: '10px',
               }}
             />
           </div>
@@ -209,6 +207,7 @@ export default function SetMintPhase() {
               color: '#fff',
               fontSize: '16px',
               cursor: 'pointer',
+              marginTop: '20px',
             }}
           >
             {loading ? 'Setting Mint Phase...' : 'Set Mint Phase'}

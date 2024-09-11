@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 
 export default function MintComponent() {
@@ -7,10 +7,47 @@ export default function MintComponent() {
   const [chainId, setChainId] = useState(null);
   const [status, setStatus] = useState('');
   const [tokenId, setTokenId] = useState('');
-  const [mintPrice, setMintPrice] = useState(''); // Assuming mintPrice is fetched from the contract
-  
+  const [mintPrice, setMintPrice] = useState('');
+  const [totalPhases, setTotalPhases] = useState(0);
+  const [phases, setPhases] = useState([]);
+
   // Address of the deployed contract
-  const collectionAddress = "0x3d952a2F6e5cC470a5a4d4e91f9aeb29b77c8413";
+  const collectionAddress = "0xb0aab7d4f1d83f6b601baa3e68170b6c4c6261d4"; // Replace with your deployed contract address
+
+  useEffect(() => {
+    const fetchPhaseDetails = async () => {
+      if (!account) return;
+
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const collectionContract = new ethers.Contract(collectionAddress, [
+          "function getTotalPhases() external view returns (uint256)",
+          "function getPhase(uint256 phaseId) external view returns (uint256 mintPrice, uint256 mintLimit)",
+          "function mint(uint256 phaseId, uint256 tokenId) external payable",
+          "function tokenURI(uint256 tokenId) external view returns (string)"
+        ], signer);
+
+        const total = await collectionContract.getTotalPhases();
+        setTotalPhases(total.toNumber()); // Convert BigNumber to number
+
+        const phaseDetails = [];
+        for (let i = 0; i < total; i++) {
+          const [mintPriceBig, mintLimitBig] = await collectionContract.getPhase(i);
+          const mintPrice = ethers.utils.formatEther(mintPriceBig); // Convert BigNumber to string
+          const mintLimit = mintLimitBig.toString(); // Convert BigNumber to string
+          phaseDetails.push({ mintPrice, mintLimit });
+        }
+        setPhases(phaseDetails);
+
+      } catch (error) {
+        console.error('Error fetching phase details:', error);
+        setStatus('Failed to fetch phase details.');
+      }
+    };
+
+    fetchPhaseDetails();
+  }, [account]);
 
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -41,26 +78,33 @@ export default function MintComponent() {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const collectionContract = new ethers.Contract(collectionAddress, [
-        // ABI definition goes here
-        "function mint(uint256 tokenId) external payable",
-        "function mintPrice() external view returns (uint256)"
+        "function getPhase(uint256 phaseId) external view returns (uint256 mintPrice, uint256 mintLimit)",
+        "function mint(uint256 phaseId, uint256 tokenId) external payable",
+        "function tokenURI(uint256 tokenId) external view returns (string)"
       ], signer);
 
-      // Fetch current mint price
-      const currentMintPrice = await collectionContract.mintPrice();
-      setMintPrice(ethers.utils.formatEther(currentMintPrice)); // Display mint price in ETH
+      const phaseId = 0; // Adjust as needed
+      const [mintPriceBig] = await collectionContract.getPhase(phaseId);
+
+      const mintPriceInEther = ethers.utils.formatEther(mintPriceBig);
+      setMintPrice(mintPriceInEther); // Display mint price in ETH
+
+      if (!tokenId) {
+        alert('Please enter a token ID.');
+        return;
+      }
+
+      const value = ethers.utils.parseEther(mintPriceInEther);
 
       console.log(`Minting token with ID ${tokenId}...`);
-      const txMint = await collectionContract.mint(tokenId, {
-        value: currentMintPrice, // Send the correct amount of ETH for minting
+      const tx = await collectionContract.mint(phaseId, tokenId, {
+        value: value,
       });
-      console.log("Minting transaction sent:", txMint.hash);
+      console.log("Minting transaction sent:", tx.hash);
 
-      // Wait for the transaction to be confirmed
-      const receipt = await txMint.wait();
-      console.log(`Token ID ${tokenId} minted successfully!`);
+      const receipt = await tx.wait();
+      console.log(`Minting transaction confirmed in block ${receipt.blockNumber}`);
 
-      // Retrieve the token URI
       const tokenURI = await collectionContract.tokenURI(tokenId);
       console.log(`Token URI for token ID ${tokenId}: ${tokenURI}`);
       setStatus(`Token ID ${tokenId} minted successfully! Token URI: ${tokenURI}`);
@@ -80,17 +124,36 @@ export default function MintComponent() {
           <div style={{ display: 'grid', gridGap: '10px', marginBottom: '20px' }}>
             <label>
               Token ID:
-              <input type="number" value={tokenId} onChange={(e) => setTokenId(e.target.value)} style={{ width: '100%', padding: '8px', color: 'black' }} />
+              <input
+                type="number"
+                value={tokenId}
+                onChange={(e) => setTokenId(e.target.value)}
+                style={{ width: '100%', padding: '8px', color: 'black' }}
+              />
             </label>
             <p>Mint Price (ETH): {mintPrice}</p>
+            <p>Total Phases: {totalPhases}</p>
+            {phases.map((phase, index) => (
+              <div key={index}>
+                <p><strong>Phase {index}:</strong></p>
+                <p>Mint Price: {phase.mintPrice} ETH</p>
+                <p>Mint Limit: {phase.mintLimit}</p>
+              </div>
+            ))}
           </div>
-          <button onClick={handleMint} style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: 'white', border: 'none', borderRadius: '5px' }}>
+          <button
+            onClick={handleMint}
+            style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: 'white', border: 'none', borderRadius: '5px' }}
+          >
             Mint Token
           </button>
           {status && <p style={{ marginTop: '20px' }}>{status}</p>}
         </div>
       ) : (
-        <button onClick={connectWallet} style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: 'white', border: 'none', borderRadius: '5px' }}>
+        <button
+          onClick={connectWallet}
+          style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: 'white', border: 'none', borderRadius: '5px' }}
+        >
           Connect MetaMask
         </button>
       )}

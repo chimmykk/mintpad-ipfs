@@ -1,23 +1,23 @@
-"use client";
+"use client"
 import { useState } from 'react';
 import { ethers } from 'ethers';
 import { deployCollection } from '../lib/deploy';
-import UploadComponent, {Uploadcomponent} from "../components/Uploadcomponent"
-import SetMintPhase, {SetMintphase} from "../components/SetMintPhase"
+import UploadComponent from "../components/UploadComponent";
+import SetMintPhase from "../components/SetMintPhase";
+
 export default function DeployComponent() {
   const [account, setAccount] = useState(null);
   const [chainId, setChainId] = useState(null);
   const [status, setStatus] = useState('');
 
   // State for form inputs
-  const [name, setName] = useState('');
-  const [symbol, setSymbol] = useState('');
-  const [mintPrice, setMintPrice] = useState('');
-  const [maxSupply, setMaxSupply] = useState('');
-  const [baseURI, setBaseURI] = useState('');
-  const [recipient, setRecipient] = useState('');
-  const [royaltyRecipient, setRoyaltyRecipient] = useState('');
-  const [royaltyPercentage, setRoyaltyPercentage] = useState('');
+  const [name, setName] = useState('MyNFTCollection');
+  const [symbol, setSymbol] = useState('MNC');
+  const [maxSupply, setMaxSupply] = useState('10000');
+  const [baseURI, setBaseURI] = useState('ipfs://bafybeiafuvw7zyjo3kmeok6i4lkfwungtp4rzirng6j4vkispln7vp64xi/');
+  const [recipient, setRecipient] = useState('0x68EB182aF9DC1e818798F5EA75F061D9cA7CC76a');
+  const [royaltyRecipient, setRoyaltyRecipient] = useState('0x68EB182aF9DC1e818798F5EA75F061D9cA7CC76a');
+  const [royaltyPercentage, setRoyaltyPercentage] = useState('500'); // 5% royalties
 
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -44,24 +44,26 @@ export default function DeployComponent() {
       return;
     }
 
+    if (!ethers.utils.isAddress(recipient) || !ethers.utils.isAddress(royaltyRecipient)) {
+      setStatus('Invalid address format.');
+      return;
+    }
+
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
 
-      const contract = await deployCollection({
+      const contractAddress = await deployCollection({
         name,
         symbol,
-        mintPrice: ethers.utils.parseEther(mintPrice), // Convert mintPrice to ethers
-        maxSupply: parseInt(maxSupply, 10), // Convert maxSupply to integer
+        maxSupply: parseInt(maxSupply, 10),
         baseURI,
         recipient,
         royaltyRecipient,
-        royaltyPercentage: parseInt(royaltyPercentage, 10), // Convert royaltyPercentage to integer
+        royaltyPercentage: parseInt(royaltyPercentage, 10),
         provider,
-        signer, // Pass the signer to the deploy function
       });
 
-      setStatus(`Collection of contract address ${contract}. has been succesfully deployed`);
+      setStatus(`Collection successfully deployed at address: ${contractAddress}`);
 
     } catch (error) {
       console.error('Error deploying collection:', error);
@@ -72,10 +74,9 @@ export default function DeployComponent() {
   return (
     <div style={{ maxWidth: '500px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       {account ? (
-
         <div>
-          <UploadComponent></UploadComponent>
-          <SetMintPhase></SetMintPhase>
+          <UploadComponent />
+          <SetMintPhase />
           <p><strong>Connected account:</strong> {account}</p>
           <p><strong>Connected chain ID:</strong> {chainId}</p>
           <div style={{ display: 'grid', gridGap: '10px', marginBottom: '20px' }}>
@@ -86,10 +87,6 @@ export default function DeployComponent() {
             <label>
               Symbol:
               <input type="text" value={symbol} onChange={(e) => setSymbol(e.target.value)} style={{ width: '100%', padding: '8px', color: 'black' }} />
-            </label>
-            <label>
-              Mint Price (ETH):
-              <input type="text" value={mintPrice} onChange={(e) => setMintPrice(e.target.value)} style={{ width: '100%', padding: '8px', color: 'black' }} />
             </label>
             <label>
               Max Supply:
@@ -123,7 +120,5 @@ export default function DeployComponent() {
         </button>
       )}
     </div>
-
-    
   );
 }
