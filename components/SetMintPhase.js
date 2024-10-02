@@ -12,7 +12,7 @@ export default function SetMintPhase() {
   const [loading, setLoading] = useState(false);
   const [account, setAccount] = useState(null);
 
-  const contractAddress = '0xb0aab7d4f1d83f6b601baa3e68170b6c4c6261d4'; // Your contract address
+  const contractAddress = '0x171a2339C0bD6651dA1538b66Ba023C30bF8ff64'; // Your contract address
   const contractABI = [
     'function addMintPhase(uint256 mintPrice, uint256 mintLimit, uint256 mintStartTime, uint256 mintEndTime, bool whitelistEnabled) external'
   ];
@@ -99,8 +99,9 @@ export default function SetMintPhase() {
         <div>
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="start-date" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
-              Select Mint Start Date:
+   
             </label>
+            Select Mint Start Date:
             <input
               id="start-date"
               type="datetime-local"
@@ -120,8 +121,9 @@ export default function SetMintPhase() {
 
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="end-date" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
-              Select Mint End Date:
+          
             </label>
+            Select Mint End Date:
             <input
               id="end-date"
               type="datetime-local"
@@ -141,8 +143,9 @@ export default function SetMintPhase() {
 
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="mint-price" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
-              Mint Price (ETH):
+         
             </label>
+            Mint Price (ETH):
             <input
               id="mint-price"
               type="text"
@@ -162,8 +165,9 @@ export default function SetMintPhase() {
 
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="mint-limit" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
-              Mint Limit Per Wallet:
+           
             </label>
+            Mint Limit Per Wallet:
             <input
               id="mint-limit"
               type="number"
@@ -183,8 +187,9 @@ export default function SetMintPhase() {
 
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="whitelist-enabled" style={{ display: 'block', marginBottom: '5px', color: '#333' }}>
-              Whitelist Enabled:
+          
             </label>
+            Whitelist Enabled:
             <input
               id="whitelist-enabled"
               type="checkbox"

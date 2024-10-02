@@ -1,0 +1,31 @@
+{
+  "tokenId": 66,
+  "name": "NFT #66",
+  "image": "66.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Light_Grey"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Jacket University_Orange"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_02"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur5"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Hat_Feather"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_03"
+    }
+  ]
+}

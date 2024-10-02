@@ -1,0 +1,31 @@
+{
+  "tokenId": 61,
+  "name": "NFT #61",
+  "image": "61.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG2"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "NoShirt"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur8"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Devil_Cap"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_06"
+    }
+  ]
+}

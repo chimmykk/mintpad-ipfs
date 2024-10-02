@@ -13,11 +13,11 @@ export default function DeployComponent() {
   // State for form inputs
   const [name, setName] = useState('MyNFTCollection');
   const [symbol, setSymbol] = useState('MNC');
-  const [maxSupply, setMaxSupply] = useState('10000');
-  const [baseURI, setBaseURI] = useState('ipfs://bafybeiafuvw7zyjo3kmeok6i4lkfwungtp4rzirng6j4vkispln7vp64xi/');
+  const [maxSupply, setMaxSupply] = useState('100');
+  const [baseURI, setBaseURI] = useState('ipfs:///');
   const [recipient, setRecipient] = useState('0x68EB182aF9DC1e818798F5EA75F061D9cA7CC76a');
   const [royaltyRecipient, setRoyaltyRecipient] = useState('0x68EB182aF9DC1e818798F5EA75F061D9cA7CC76a');
-  const [royaltyPercentage, setRoyaltyPercentage] = useState('500'); // 5% royalties
+  const [royaltyPercentage, setRoyaltyPercentage] = useState('50'); // 5% royalties
 
   const connectWallet = async () => {
     if (window.ethereum) {

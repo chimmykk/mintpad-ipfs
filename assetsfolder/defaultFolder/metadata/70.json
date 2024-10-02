@@ -1,0 +1,31 @@
+{
+  "tokenId": 70,
+  "name": "NFT #70",
+  "image": "70.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG1"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Jacket2"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_02"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur3"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Hat_Pawpads"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_04"
+    }
+  ]
+}

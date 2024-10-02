@@ -1,0 +1,31 @@
+{
+  "tokenId": 83,
+  "name": "NFT #83",
+  "image": "83.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG2"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_Top_Blue"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur7"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "NoHair"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_15"
+    }
+  ]
+}

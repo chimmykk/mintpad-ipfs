@@ -1,0 +1,31 @@
+{
+  "tokenId": 63,
+  "name": "NFT #63",
+  "image": "63.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG3"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_Top_Blue"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_03"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur4"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Earring"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_26"
+    }
+  ]
+}

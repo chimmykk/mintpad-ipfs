@@ -1,0 +1,31 @@
+{
+  "tokenId": 76,
+  "name": "NFT #76",
+  "image": "76.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Duke"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Jacket1"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur8"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Hat3"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_04"
+    }
+  ]
+}

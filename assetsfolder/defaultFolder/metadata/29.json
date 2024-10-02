@@ -1,0 +1,31 @@
+{
+  "tokenId": 29,
+  "name": "NFT #29",
+  "image": "29.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Light_Grey"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Jacket2"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_03"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur5"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Hat2"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_26"
+    }
+  ]
+}

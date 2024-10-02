@@ -1,0 +1,31 @@
+{
+  "tokenId": 9,
+  "name": "NFT #9",
+  "image": "9.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Light_Grey"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_Top_White"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_01"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur8"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Hat1"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_05"
+    }
+  ]
+}

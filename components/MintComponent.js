@@ -12,7 +12,7 @@ export default function MintComponent() {
   const [phases, setPhases] = useState([]);
 
   // Address of the deployed contract
-  const collectionAddress = "0xb0aab7d4f1d83f6b601baa3e68170b6c4c6261d4"; // Replace with your deployed contract address
+  const collectionAddress = "0x171a2339C0bD6651dA1538b66Ba023C30bF8ff64"; // Replace with your deployed contract address
 
   useEffect(() => {
     const fetchPhaseDetails = async () => {

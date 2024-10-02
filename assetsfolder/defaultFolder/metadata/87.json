@@ -1,0 +1,31 @@
+{
+  "tokenId": 87,
+  "name": "NFT #87",
+  "image": "87.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG3"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Devil_Collar"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_01"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur5"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Hat_Feather"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_22"
+    }
+  ]
+}

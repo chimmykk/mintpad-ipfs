@@ -1,0 +1,31 @@
+{
+  "tokenId": 42,
+  "name": "NFT #42",
+  "image": "42.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Duke"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Leather_Jacket"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_02"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur7"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Headband"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_06"
+    }
+  ]
+}

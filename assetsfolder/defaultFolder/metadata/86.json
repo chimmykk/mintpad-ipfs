@@ -1,0 +1,31 @@
+{
+  "tokenId": 86,
+  "name": "NFT #86",
+  "image": "86.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG1"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Leather_Jacket"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_01"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur3"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Hat1"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_22"
+    }
+  ]
+}

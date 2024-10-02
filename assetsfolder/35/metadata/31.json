@@ -1,0 +1,31 @@
+{
+  "tokenId": 31,
+  "name": "NFT #31",
+  "image": "31.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Light_Grey"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "NoShirt"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur1"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Top_Hat_2"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_01"
+    }
+  ]
+}

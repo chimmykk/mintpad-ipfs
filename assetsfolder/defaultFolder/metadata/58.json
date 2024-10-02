@@ -1,0 +1,31 @@
+{
+  "tokenId": 58,
+  "name": "NFT #58",
+  "image": "58.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Duke"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_Top_White"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_03"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur5"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Hat_Feather"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_02"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "tokenId": 41,
+  "name": "NFT #41",
+  "image": "41.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG3"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_Top_Blue"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur8"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Mask"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_04"
+    }
+  ]
+}

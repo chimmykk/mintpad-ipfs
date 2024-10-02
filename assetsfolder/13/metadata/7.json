@@ -1,0 +1,31 @@
+{
+  "tokenId": 7,
+  "name": "NFT #7",
+  "image": "7.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_T_Shirt"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_02"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur7"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "NoHair"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_02"
+    }
+  ]
+}

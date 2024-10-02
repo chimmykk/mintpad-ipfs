@@ -1,0 +1,31 @@
+{
+  "tokenId": 85,
+  "name": "NFT #85",
+  "image": "85.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Light_Grey2"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_T_Shirt"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur7"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Headband"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_06"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "tokenId": 79,
+  "name": "NFT #79",
+  "image": "79.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG4"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Jumper"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_01"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur3"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Mask"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_06"
+    }
+  ]
+}

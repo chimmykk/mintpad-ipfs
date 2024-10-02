@@ -1,0 +1,31 @@
+{
+  "tokenId": 44,
+  "name": "NFT #44",
+  "image": "44.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_Top_White"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_01"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur1"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Mask"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_15"
+    }
+  ]
+}

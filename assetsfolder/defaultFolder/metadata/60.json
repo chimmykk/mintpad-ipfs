@@ -1,0 +1,31 @@
+{
+  "tokenId": 60,
+  "name": "NFT #60",
+  "image": "60.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG1"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Leather_Jacket"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_02"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur5"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Top_Hat_2"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_01"
+    }
+  ]
+}

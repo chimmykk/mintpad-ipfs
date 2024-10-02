@@ -1,0 +1,31 @@
+{
+  "tokenId": 95,
+  "name": "NFT #95",
+  "image": "95.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Light_Grey"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Scarf2"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_02"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur4"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Hat_Feather"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_01"
+    }
+  ]
+}

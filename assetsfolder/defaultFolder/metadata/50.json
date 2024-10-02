@@ -1,0 +1,31 @@
+{
+  "tokenId": 50,
+  "name": "NFT #50",
+  "image": "50.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG1"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Duke_T_Shirt_Devil"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_02"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur3"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Hat2"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_05"
+    }
+  ]
+}

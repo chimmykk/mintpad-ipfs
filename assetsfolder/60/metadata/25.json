@@ -1,0 +1,31 @@
+{
+  "tokenId": 25,
+  "name": "NFT #25",
+  "image": "25.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG3"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Jumper"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur1"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Headband"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_22"
+    }
+  ]
+}

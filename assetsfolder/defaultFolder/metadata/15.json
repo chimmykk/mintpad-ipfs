@@ -1,0 +1,31 @@
+{
+  "tokenId": 15,
+  "name": "NFT #15",
+  "image": "15.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG3"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Jacket University"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur8"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "NoHair"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_05"
+    }
+  ]
+}

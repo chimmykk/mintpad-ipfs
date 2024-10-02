@@ -1,0 +1,31 @@
+{
+  "tokenId": 37,
+  "name": "NFT #37",
+  "image": "37.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Light_Grey"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Bandana"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_01"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur3"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Duke_Headband"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_02"
+    }
+  ]
+}

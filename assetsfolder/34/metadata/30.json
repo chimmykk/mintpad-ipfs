@@ -1,0 +1,31 @@
+{
+  "tokenId": 30,
+  "name": "NFT #30",
+  "image": "30.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "BG3"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Jacket University"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "eyes_04"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Fur6"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Top_Hat_1"
+    },
+    {
+      "trait_type": "Mouthes",
+      "value": "snout_04"
+    }
+  ]
+}
