@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import DeployComponent from '../../components/DeployComponent';
 import MintComponent from '../../components/MintComponent';
-import UploadComponent from '../../components/UploadComponent'; // Import the new component
+import UploadComponent from './components/UploadComponent'; // Import the new component
 
 export default function Home() {
   return (

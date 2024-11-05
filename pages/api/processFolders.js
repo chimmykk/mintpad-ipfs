@@ -1,10 +1,11 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { createCarFile, uploadCarFile } from '../api/carUtils';
-
-
+import pLimit from 'p-limit';
 
 const baseDir = path.join(process.cwd(), 'assetsfolder');
+const limit = pLimit(10); // Limit concurrency to 10 to avoid memory issues
+
 const getImageExtension = (fileName, folderPath) => {
   const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.mp4'];
   for (const ext of imageExtensions) {
@@ -12,13 +13,13 @@ const getImageExtension = (fileName, folderPath) => {
       return ext;
     }
   }
-  return '.png'; 
+  return '.png';
 };
 
 const updateMetadataFiles = async (metadataFolderPath, rootCID) => {
   try {
     const files = fs.readdirSync(metadataFolderPath).filter(file => file.endsWith('.json'));
-    
+
     for (const file of files) {
       const filePath = path.join(metadataFolderPath, file);
       const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
@@ -26,7 +27,6 @@ const updateMetadataFiles = async (metadataFolderPath, rootCID) => {
       const imageExtension = getImageExtension(fileName, path.join(metadataFolderPath, '..', 'images'));
       data.image = `ipfs://${rootCID}/${fileName}${imageExtension}`;
       fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
-      
       console.log(`Updated ${file} with new image URL.`);
     }
   } catch (error) {
@@ -34,7 +34,6 @@ const updateMetadataFiles = async (metadataFolderPath, rootCID) => {
   }
 };
 
-// Function to process a single folder
 const processFolder = async (folderName) => {
   const folderPath = path.join(baseDir, folderName, 'images');
   const outputCarPath = path.join(process.cwd(), 'test-output-images');
@@ -53,7 +52,7 @@ const processFolder = async (folderName) => {
     // Optionally delete the processed folder
     await fs.remove(path.join(baseDir, folderName));
     console.log(`Deleted folder ${folderName}`);
-    
+
   } catch (error) {
     console.error(`Error processing folder ${folderName}:`, error);
   }
@@ -65,10 +64,11 @@ const processAllFolders = async () => {
       return fs.statSync(path.join(baseDir, file)).isDirectory() && !isNaN(parseInt(file, 10));
     });
 
-    for (const folder of folders) {
-      await processFolder(folder);
-    }
-    
+    // Process each folder with controlled concurrency
+    await Promise.all(
+      folders.map(folder => limit(() => processFolder(folder)))
+    );
+
   } catch (error) {
     console.error('Error processing folders:', error);
   }
