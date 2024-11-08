@@ -1,15 +1,18 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
-import contractAbi from './contractAbi.json';
+import React, { useState, useEffect } from "react";
+import { ethers } from "ethers";
+import contractAbi from "./contractAbi.json";
 
-const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFileSize }) => {
-  const [status, setStatus] = useState('');
+const UpdateIpfsToContract = ({
+  ipfsLink: initialIpfsLink,
+  fileSize: initialFileSize,
+}) => {
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
-  const [contractAddress, setContractAddress] = useState('');
-  const [ipfsLink, setIpfsLink] = useState(initialIpfsLink || '');
+  const [contractAddress, setContractAddress] = useState("");
+  const [ipfsLink, setIpfsLink] = useState(initialIpfsLink || "");
   const [amount, setAmount] = useState();
-  const [data, setData] = useState('0x'); // Default to empty bytes
+  const [data, setData] = useState("0x"); // Default to empty bytes
 
   useEffect(() => {
     if (initialIpfsLink) {
@@ -19,7 +22,7 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
 
   const updateContract = async () => {
     if (!ipfsLink || !amount || !contractAddress || !data) {
-      setStatus('IPFS link, amount, contract address, or data is missing.');
+      setStatus("IPFS link, amount, contract address, or data is missing.");
       return;
     }
 
@@ -33,26 +36,34 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
       const signer = provider.getSigner();
 
       // Contract instance
-      const contract = new ethers.Contract(contractAddress, contractAbi, signer);
+      const contract = new ethers.Contract(
+        contractAddress,
+        contractAbi,
+        signer,
+      );
 
       // Call the contract method with the correct data types
-      const tx = await contract.lazyMint(ethers.BigNumber.from(amount), baseURIForTokens, dataBytes);
+      const tx = await contract.lazyMint(
+        ethers.BigNumber.from(amount),
+        baseURIForTokens,
+        dataBytes,
+      );
 
       // Wait for the transaction to be mined
       await tx.wait();
 
-      setStatus('Successfully updated the contract with IPFS and amount.');
+      setStatus("Successfully updated the contract with IPFS and amount.");
     } catch (error) {
       console.error("Error interacting with the contract:", error);
-      setStatus('An error occurred while updating the contract.');
+      setStatus("An error occurred while updating the contract.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <div style={{ marginBottom: '15px' }}>
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <div style={{ marginBottom: "15px" }}>
         <input
           type="text"
           value={contractAddress}
@@ -62,7 +73,7 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
         />
       </div>
 
-      <div style={{ marginBottom: '15px' }}>
+      <div style={{ marginBottom: "15px" }}>
         <input
           type="text"
           value={ipfsLink}
@@ -72,7 +83,7 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
         />
       </div>
 
-      <div style={{ marginBottom: '15px' }}>
+      <div style={{ marginBottom: "15px" }}>
         <input
           type="number"
           value={amount}
@@ -82,7 +93,7 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
         />
       </div>
 
-      <div style={{ marginBottom: '15px' }}>
+      <div style={{ marginBottom: "15px" }}>
         <input
           type="text"
           value={data}
@@ -97,7 +108,7 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
         disabled={loading}
         style={buttonStyles(loading)}
       >
-        {loading ? 'Updating...' : 'Update Contract with IPFS'}
+        {loading ? "Updating..." : "Update Contract with IPFS"}
       </button>
 
       {/* Status message */}
@@ -112,34 +123,34 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
 
 // Custom styles
 const inputStyles = {
-  padding: '12px',
-  fontSize: '16px',
-  width: '100%',
-  maxWidth: '350px',
-  marginRight: '10px',
-  borderRadius: '5px',
-  border: '1px solid #ddd',
-  backgroundColor: '#fff',
-  color: '#333',
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  padding: "12px",
+  fontSize: "16px",
+  width: "100%",
+  maxWidth: "350px",
+  marginRight: "10px",
+  borderRadius: "5px",
+  border: "1px solid #ddd",
+  backgroundColor: "#fff",
+  color: "#333",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
 };
 
 const buttonStyles = (loading) => ({
-  padding: '12px 24px',
-  backgroundColor: '#007BFF',
-  color: 'white',
-  border: 'none',
-  borderRadius: '5px',
-  cursor: loading ? 'not-allowed' : 'pointer',
-  fontSize: '16px',
+  padding: "12px 24px",
+  backgroundColor: "#007BFF",
+  color: "white",
+  border: "none",
+  borderRadius: "5px",
+  cursor: loading ? "not-allowed" : "pointer",
+  fontSize: "16px",
 });
 
 const statusMessageStyles = (loading) => ({
-  marginTop: '20px',
-  backgroundColor: loading ? '#e7f5ff' : '#ffcccc',
-  padding: '15px',
-  borderRadius: '8px',
-  color: loading ? '#333' : '#ff0000',
+  marginTop: "20px",
+  backgroundColor: loading ? "#e7f5ff" : "#ffcccc",
+  padding: "15px",
+  borderRadius: "8px",
+  color: loading ? "#333" : "#ff0000",
 });
 
 export default UpdateIpfsToContract;
