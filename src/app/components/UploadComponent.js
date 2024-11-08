@@ -88,7 +88,7 @@ export default function UploadComponent() {
 
   // Function to copy the full URL (including prefix + secondRootCid) to clipboard
   const copyFullUrlToClipboard = () => {
-    const fullUrl = `https://uneven-lavender-harrier.myfilebase.com/ipfs/+${secondRootCid}`;
+    const fullUrl = `https://uneven-lavender-harrier.myfilebase.com/ipfs/+${secondRootCid}/`;
     navigator.clipboard.writeText(fullUrl).then(() => {
       setMessage('Full URL copied to clipboard!');
     }).catch((err) => {

@@ -8,7 +8,7 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
   const [loading, setLoading] = useState(false);
   const [contractAddress, setContractAddress] = useState('');
   const [ipfsLink, setIpfsLink] = useState(initialIpfsLink || '');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [data, setData] = useState('0x'); // Default to empty bytes
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const UpdateIpfsToContract = ({ ipfsLink: initialIpfsLink, fileSize: initialFile
           type="number"
           value={amount}
           onChange={(e) => setAmount(Number(e.target.value))}
-          placeholder="Enter Amount (uint256)"
+          placeholder="Enter Amount Collection Size(uint256)"
           style={inputStyles}
         />
       </div>
