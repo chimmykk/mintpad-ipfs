@@ -49,22 +49,29 @@ export const config = {
 const updateMetadataFiles = async (metadataFolderPath, rootCID) => {
   try {
     const files = fs.readdirSync(metadataFolderPath).filter(file => file.endsWith('.json'));
-    
+
     for (const file of files) {
       const filePath = path.join(metadataFolderPath, file);
       const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
       const fileName = path.basename(file, '.json');
       const imageExtension = getImageExtension(fileName, path.join(metadataFolderPath, '..', 'images'));
+      
+      // Update image link with root CID
       data.image = `ipfs://${rootCID}/${fileName}${imageExtension}`;
       fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
       
-      console.log(`Updated ${file} with new image URL.`);
+      // Rename file to remove .json suffix
+      const newFilePath = path.join(metadataFolderPath, fileName);
+      fs.renameSync(filePath, newFilePath);
+      
+      console.log(`Updated and renamed ${file} to ${fileName}`);
     }
   } catch (error) {
     console.error('Error updating metadata files:', error);
     throw error;
   }
 };
+
 
 const getImageExtension = (fileName, folderPath) => {
   const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.mp4'];

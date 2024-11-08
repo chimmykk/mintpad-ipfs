@@ -1,4 +1,3 @@
-// components/UploadComponent.js
 "use client"
 import { useState } from 'react';
 
@@ -58,14 +57,31 @@ export default function UploadComponent() {
           multiple 
           webkitdirectory="true" 
           directory="true" 
-          style={{ display: 'block', margin: '0 auto' }} 
+          style={{ display: 'block', margin: '0 auto', padding: '10px', fontSize: '16px' }} 
         />
-        <button type="submit" disabled={uploading} style={{ display: 'block', margin: '10px auto' }}>
+        <button 
+          type="submit" 
+          disabled={uploading} 
+          style={{
+            display: 'block', 
+            margin: '20px auto', 
+            padding: '12px 24px', 
+            fontSize: '16px', 
+            fontWeight: '600', 
+            color: '#fff', 
+            background: uploading ? '#8c8c8c' : 'linear-gradient(135deg, #4e74e6, #1d56f1)', 
+            border: 'none', 
+            borderRadius: '8px', 
+            cursor: uploading ? 'not-allowed' : 'pointer', 
+            transition: 'all 0.3s ease-in-out', 
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+          }}
+        >
           {uploading ? 'Uploading...' : 'Upload'}
         </button>
       </form>
-      {message && <p style={{ textAlign: 'center' }}>{message}</p>}
-      {logs && <pre style={{ textAlign: 'center' }}>{logs}</pre>}
+      {message && <p style={{ textAlign: 'center', fontSize: '16px', fontWeight: '500', color: '#333' }}>{message}</p>}
+      {logs && <pre style={{ textAlign: 'center', color: '#333' }}>{logs}</pre>}
     </div>
   );
 }

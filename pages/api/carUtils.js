@@ -48,6 +48,7 @@ export const uploadCarFile = async (carFilePath) => {
 
     const command = new PutObjectCommand(params);
     const response = await s3.send(command);
+   
 
     log += `ETag for the uploaded CAR file: ${response.ETag}\n`;
 
