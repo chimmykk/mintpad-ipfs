@@ -7,15 +7,15 @@ export default function Home() {
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <Head>
-        <title>MetaMask Deployment</title>
+        <title>FileBase Uploader</title>
         <meta name="description" content="Next.js app with MetaMask deployment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 style={{ textAlign: 'center' }}>Mintpad v2 Test Deployment</h1>
+        <h1 style={{ textAlign: 'center' }}>Folder Uploader</h1>
         <div style={{ marginBottom: '40px' }}>
-          <p style={{ textAlign: 'center', fontSize: '18px', fontWeight: 'bold' }}>Deploy Collection</p>
+
   
         </div>
         <div style={{ marginBottom: '40px' }}>
@@ -23,7 +23,7 @@ export default function Home() {
           <UploadComponent /> {/* Add the UploadComponent here */}
         </div>
         <div style={{ marginBottom: '40px' }}>
-          <p style={{ textAlign: 'center', fontSize: '18px', fontWeight: 'bold' }}>Mint NFTs</p>
+
    
         </div>
       </main>
