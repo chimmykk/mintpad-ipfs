@@ -58,7 +58,7 @@ export default function UploadComponent() {
 
   // Function to set up SSE for progress tracking
   const setupProgressTracking = useCallback((sessionId) => {
-    const eventSource = new EventSource(`http://localhost:8020/upload-progress/${sessionId}`);
+    const eventSource = new EventSource(`https://app.mintpad.co/upload-progress/${sessionId}`);
 
     eventSource.onmessage = (event) => {
       try {
