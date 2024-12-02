@@ -159,7 +159,7 @@ export default function UploadComponent() {
         
         // Handle the final response from the last chunk
         if (i === chunks.length - 1 && result.lastRootCID) {
-          const fullIpfsLink = `https://private-gray-tiger.myfilebase.com/ipfs/${result.lastRootCID}/`;
+          const fullIpfsLink = `ipfs://${result.lastRootCID}/`;
           setIpfsLink(fullIpfsLink);
           setLastRootCid(result.lastRootCID);
           setFileSize(totalSize);
@@ -227,7 +227,7 @@ export default function UploadComponent() {
 
   // Copy the full IPFS URL to the clipboard
   const copyFullUrlToClipboard = () => {
-    const fullUrl = `https://private-gray-tiger.myfilebase.com/ipfs/${lastRootCid}/`;
+    const fullUrl = `ipfs://${lastRootCid}/`;
     
     navigator.clipboard.writeText(fullUrl)
       .then(() => {
